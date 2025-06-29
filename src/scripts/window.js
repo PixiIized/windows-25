@@ -10,10 +10,13 @@ export class windowObject {
         this.fullscreen = fullscreen;
 
         this.id = utils.getRandomInt(0, 256);
-        while (states.openWindows.includes(this.id)) {
+        while (states.openWindows[this.id]) {
             this.id = utils.getRandomInt(0, 256);
         }
         this.window = null;
+        this.header = null;
+        this.footer = null;
+        this.footers = []; // This is a list for now but it will be an object containing info and stuff later
 
         if (typeof this.name !== 'string') {
             throw new TypeError('Window name must be a string');
@@ -35,13 +38,50 @@ export class windowObject {
     }
 
     open() {
-        this.window = document.createElement('div');
-        this.window.id = this.id;
-        states.openWindows[this.id] = true;
-        document.body.appendChild(this.window);
+        if (!(states.windowCount >= 256)) {
+            // Make window
+            states.windowCount++;
+            this.window = document.createElement('div');
+            this.window.className = 'window';
+            this.window.id = this.id;
+            this.window.style.width = `${this.width}px`;
+            this.window.style.height = `${this.height}px`;
+            this.window.style.zIndex = states.topZIndex++;
+            states.openWindows[this.id] = true;
+            document.body.appendChild(this.window);
+
+            // Move to front
+            this.window.addEventListener('mousedown', () => {
+                this.window.style.zIndex = states.topZIndex++;
+            });
+
+            // Make header
+            this.header = document.createElement('span');
+            this.header.className = 'header';
+            this.window.appendChild(this.header);
+
+            // Make footer
+            this.footer = document.createElement('div');
+            this.footer.className = 'footers';
+            this.window.appendChild(this.footer);
+            // Note: this is the div containing all footers. the app config can add the details themselves.
+            // Here's a testing default
+            this.footerDefault = document.createElement('span');
+            this.footerDefault.className = 'footerDefault';
+            this.footer.appendChild(this.footerDefault);
+
+            // Make draggable
+            $( function() {
+                $( '.window' ).draggable({ handle: '.header', scroll: false }).resizable({ minWidth: 75, minHeight: 40});
+            });
+
+        } else {
+            throw new Error('Can\'t open new window: limit reached');
+        }
     }
 
     close() {
+        states.windowCount--;
         this.window.remove();
         states.openWindows[this.id] = false;
         this.id = null;

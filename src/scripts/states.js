@@ -1,3 +1,5 @@
 export const states = {
-    openWindows: []
+    openWindows: [],
+    windowCount: null,
+    topZIndex: 1
 }
