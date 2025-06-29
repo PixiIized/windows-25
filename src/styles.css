@@ -34,3 +34,26 @@ body {
     height: var(--taskbar-height);
     width: 100%;
 }
+
+/* Windows */
+.window {
+    /* Position */
+    position: absolute;
+
+    /* Styling */
+    background-color: var(--object3d-background);
+    border: 2px solid transparent;
+    border-image: url('./assets/images/borders/window.png') 2 round;
+
+    /* Handle inner elements */
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+.header {
+    /* Styling */
+    display: inline-block;
+    width: 100%;
+    height: 18px;
+    background-color: var(--header-background);
+}

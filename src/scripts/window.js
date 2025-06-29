@@ -1,5 +1,6 @@
 import * as utils from './utils.js';
 import { states } from './states.js';
+import $ from 'jquery';
 
 export class windowObject {
     constructor(name, app, width, height, fullscreen) {
@@ -10,10 +11,11 @@ export class windowObject {
         this.fullscreen = fullscreen;
 
         this.id = utils.getRandomInt(0, 256);
-        while (states.openWindows.includes(this.id)) {
+        while (states.openWindows[this.id]) {
             this.id = utils.getRandomInt(0, 256);
         }
         this.window = null;
+        this.header = null;
 
         if (typeof this.name !== 'string') {
             throw new TypeError('Window name must be a string');
@@ -35,13 +37,33 @@ export class windowObject {
     }
 
     open() {
-        this.window = document.createElement('div');
-        this.window.id = this.id;
-        states.openWindows[this.id] = true;
-        document.body.appendChild(this.window);
+        if (!(states.windowCount >= 256)) {
+            // Make window
+            states.windowCount++;
+            this.window = document.createElement('div');
+            this.window.className = 'window';
+            this.window.id = this.id;
+            this.window.style.width = `${this.width}px`;
+            this.window.style.height = `${this.height}px`;
+            states.openWindows[this.id] = true;
+            document.body.appendChild(this.window);
+
+            // Make header
+            this.header = document.createElement('span');
+            this.header.className = 'header';
+            this.window.appendChild(this.header);
+
+            // Make draggable
+            $( function() {
+                $( `#${this.id}` ).draggable({ handle: '.header'});
+            });
+        } else {
+            throw new Error('Can\'t open new window: limit reached');
+        }
     }
 
     close() {
+        states.windowCount--;
         this.window.remove();
         states.openWindows[this.id] = false;
         this.id = null;
