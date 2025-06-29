@@ -8,6 +8,7 @@
   <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/PixiIized/windows-25">
   <img alt="GitHub Issues or Pull Requests" src="https://img.shields.io/github/issues/PixiIized/windows-25">
   <img alt="GitHub License" src="https://img.shields.io/github/license/PixiIized/windows-25">
+  <img alt="Dynamic JSON Badge" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fwindows25.pages.dev%2Fconfig.json&query=%24.metadata.version&label=version">
   <img alt="Website" src="https://img.shields.io/website?url=https%3A%2F%2Fwindows25.pages.dev&label=Windows%2025"><br>
   <img src='https://skillicons.dev/icons?i=html,css,js,jquery'>
 </div>
