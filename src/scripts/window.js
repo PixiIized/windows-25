@@ -54,7 +54,8 @@ export class windowObject {
 
             // Make draggable
             $( function() {
-                $( `#${this.id}` ).draggable({ handle: '.header'});
+                $( '.window' ).draggable({ handle: '.header'});
+                $( '.window' ).resizable();
             });
         } else {
             throw new Error('Can\'t open new window: limit reached');
