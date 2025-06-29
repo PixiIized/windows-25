@@ -1,4 +1,5 @@
 export const states = {
     openWindows: [],
-    windowCount: null
+    windowCount: null,
+    topZIndex: 1
 }
