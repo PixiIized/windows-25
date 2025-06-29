@@ -1,0 +1,22 @@
+{
+    "appearance": {
+        "taskbar": {
+            "height": 10
+        }
+    },
+    "settings": {
+        "appearance": {
+            "scale": 1,
+            "theme": {
+                "desktopBackground": {
+                    "color": "#008080",
+                    "image": null
+                },
+                "object3d": {
+                    "background": "#c0c0c0",
+                    "header": "000080"
+                }
+            }
+        }
+    }
+}

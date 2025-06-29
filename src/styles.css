@@ -1,0 +1,36 @@
+:root {
+    /* Constants */
+    --taskbar-height: 26px;
+
+    /* Theme */
+    --desktop-background-color: #008080;
+    --desktop-background-image: none;
+    --object3d-background: #c0c0c0;
+    --header-background: #000080;
+}
+
+/* Global */
+* {
+    padding: 0;
+    margin: 0;
+    image-rendering: pixelated;
+    overflow: hidden;
+}
+
+body {
+    background-color: var(--desktop-background-color);
+}
+
+/* Desktop */
+#taskbar {
+    /* Position */
+    position: absolute;
+    bottom: 0px;
+
+    /* Styling */
+    background-color: var(--object3d-background);
+    border-top: 2px solid transparent;
+    border-image: url('./assets/images/borders/window.png') 2 round;
+    height: var(--taskbar-height);
+    width: 100%;
+}
