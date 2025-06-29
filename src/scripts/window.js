@@ -1,6 +1,5 @@
 import * as utils from './utils.js';
 import { states } from './states.js';
-import $ from 'jquery';
 
 export class windowObject {
     constructor(name, app, width, height, fullscreen) {
