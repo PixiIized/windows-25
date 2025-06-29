@@ -1,4 +1,7 @@
 {
+    "metadata": {
+        "version": "0.1.0"
+    },
     "appearance": {
         "taskbar": {
             "height": 10
