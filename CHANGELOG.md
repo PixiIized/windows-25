@@ -9,9 +9,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
--- Organized everything
--- Created a window object
--- Made a ton of files
--- Scripts and stuff
--- Taskbar
--- Note: this stuff still isn't functional yet
+- Organized everything
+- Created a window object
+- Made a ton of files
+- Scripts and stuff
+- Taskbar
+- Note: this stuff still isn't functional yet
